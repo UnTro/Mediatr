@@ -415,3 +415,4 @@ obj/
 #Nuget packages folder
 packages/
 /Properties/
+/ignore
