@@ -2,18 +2,18 @@
 using MediatrStudying.Controllers.DItesting;
 using System.Text;
 //using MediatrStudying.Controllers.Moisture;
-
+using MediatR;
 namespace MediatrStudying
 {
-    public class Program
+    public class Program 
     {
         public static void Main(string[] args)
         {
 
             var builder = WebApplication.CreateBuilder(args);
-            
-            // Add services to the container.
 
+            // Add services to the container.
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -26,7 +26,7 @@ namespace MediatrStudying
             builder.Services.AddTransient<Temperature>();
             //---------------
             var app = builder.Build();
-
+            
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
